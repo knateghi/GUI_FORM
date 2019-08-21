@@ -11,23 +11,28 @@ public class Form extends JFrame{
     private JPanel rootPanel;
     private JPanel northPanel;
     private JPanel centerPanel;
+    private JPanel southPanel;
+
     private JRadioButton plainRadioButton;
     private JRadioButton boldRadioButton;
     private JRadioButton italicRadioButton;
+    private ButtonGroup buttonGroup;
+
     private JLabel firstNameLabel;
     private JLabel lastNameLabel;
     private JLabel phoneLabel;
+
     private JList list1;
+    private JList list2;
+
     private JTextField lastNameTextField;
     private JTextField firstNameTextField;
     private JTextField textField1;
     private JComboBox comboBox1;
-    private JList list2;
     private JButton addButton;
     private JTextField outputTextField;
-    private JPanel southPanel;
     private JButton submitButton;
-    private ButtonGroup buttonGroup;
+    private JLabel areasOfInterestLabel;
 
     private static final String[] comboBoxList={
        "Full Time",
@@ -63,6 +68,9 @@ public class Form extends JFrame{
                 outputTextField.setFont(new Font("Serif", Font.PLAIN, 13));
             }
         });
+
+
+
         boldRadioButton.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -96,6 +104,10 @@ public class Form extends JFrame{
                 list2.setListData(list1.getSelectedValuesList().toArray(new String[0]));
             }
         });
+
+
+
+
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -107,69 +119,74 @@ public class Form extends JFrame{
         });
 
 
-
         MouseHandler mouseHandler = new MouseHandler();
         rootPanel.addMouseListener(mouseHandler);
         rootPanel.addMouseMotionListener(mouseHandler);
 
-    }
+    }  //end of the constructor
     private class MouseHandler implements MouseListener, MouseMotionListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
             outputTextField.setText(String.format("Mouse cLicked at [%d,%d ]",
-                    e.getX(),e.getY()));
+                    e.getX(), e.getY()));
 
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
             outputTextField.setText(String.format("Mouse pressed at [%d,%d]",
-                    e.getX(),e.getY()));
+                    e.getX(), e.getY()));
 
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
             outputTextField.setText(String.format("Mouse released at [%d,%d]",
-                    e.getX(),e.getY()));
+                    e.getX(), e.getY()));
 
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
             outputTextField.setText(String.format("Mouse entered at [%d,%d]",
-                    e.getX(),e.getY()));
+                    e.getX(), e.getY()));
 
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             outputTextField.setText(String.format("Mouse exited at [%d,%d]",
-                    e.getX(),e.getY()));
+                    e.getX(), e.getY()));
 
         }
 
         @Override
         public void mouseDragged(MouseEvent e) {
             outputTextField.setText(String.format("Mouse dragged at [%d,%d]",
-                    e.getX(),e.getY()));
+                    e.getX(), e.getY()));
 
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
             outputTextField.setText(String.format("Mouse moved at [%d,%d]",
-                    e.getX(),e.getY()));
+                    e.getX(), e.getY()));
 
         }
+
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame(" Application Form");
-        frame.setContentPane(new Form().rootPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
+
+
+        public static void main(String[] args) {
+            JFrame frame = new JFrame(" Application Form");
+            frame.setContentPane(new Form().rootPanel);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
+        }
+
 }
+
+
